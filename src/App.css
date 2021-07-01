@@ -1,5 +1,14 @@
+:root {
+  --primary: rgb(22 94 106);
+  --primary-light: rgba(22, 94, 106, 0.6);
+  --orange: #f55d2c;
+  --control-border: #999999;
+  --background: #eaeeef;
+}
+
 .App {
   text-align: center;
+  position: relative;
 }
 
 .App-logo {

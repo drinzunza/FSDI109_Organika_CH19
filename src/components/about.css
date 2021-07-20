@@ -1,0 +1,9 @@
+
+
+.about-page h1, h2 {
+    text-align: center;
+}
+
+.about-page {
+    min-height: 300px;
+}

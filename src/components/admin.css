@@ -1,0 +1,29 @@
+.admin-page {
+    height: auto;
+}
+
+
+.admin-page .capture-form {
+    width: 360px;
+    padding: 20px 5px;
+    border: 1px solid #eaeaea;
+    border-radius: 6px;
+    background-color: rgb(123, 149, 156);
+    margin: 20px 30px;
+}
+
+.admin-page .my-control {
+    margin-bottom: 12px;
+}
+
+.admin-page .my-control label{
+    display: inline-block;
+    width: 80px;
+    text-align: right;
+    margin-right: 7px;
+}
+
+.admin-page .my-control input {
+    display: inline-block;
+    width: 230px;
+}

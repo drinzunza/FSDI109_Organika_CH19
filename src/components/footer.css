@@ -2,8 +2,8 @@
 .footer-page {
     padding: 20px 0;
     font-family: 'Segoe UI', sans-serif;
-    position: absolute;
-    bottom: 0;
+    /* position: absolute; */
+    /* bottom: 0; */
     width: 100%;
     color: white;
     background-color: #313637;

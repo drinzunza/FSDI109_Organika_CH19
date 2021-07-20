@@ -2,8 +2,11 @@ import React, { Component } from "react";
 import QuantityPicker from "./quantityPicker";
 
 import "./item.css";
+import storeContext from "../context/storeContext";
 
 class Item extends Component {
+  static contextType = storeContext;
+
   state = {
     quantity: 1,
   };
@@ -25,13 +28,24 @@ class Item extends Component {
         <div className="item-controls">
           <QuantityPicker onValueChange={this.handleQuantityChange}></QuantityPicker>
 
-          <button className="btn btn-sm btn-light btn-add">
+          <button onClick={this.handleAddButton} className="btn btn-sm btn-light btn-add">
             <i className="fa fa-cart-plus" aria-hidden="true"></i>
           </button>
         </div>
       </div>
     );
   }
+
+  handleAddButton = () => {
+    // create a copy of the prod    
+    var copy = {
+      ...this.props.prod,  // copy every property from prod object
+      quantity: this.state.quantity
+    };    
+    
+    // send the copy to cart
+    this.context.addProdToCart(copy);
+  };
 
   getTotal = () => {
     let total = this.props.prod.price * this.state.quantity;
@@ -45,3 +59,14 @@ class Item extends Component {
 }
 
 export default Item;
+
+
+/**
+ * 
+ *   1 - create a component (itemInCart)
+ *   2 - map the cart array to the new component
+ *   3 - pass the data as prop
+ *   4 - in itemInCart read the and display the item info
+ * 
+ * 
+ */

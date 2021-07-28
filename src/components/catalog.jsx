@@ -14,6 +14,9 @@ class Catalog extends Component {
   render() {
     let itemsToDisplay = this.state.items;
 
+    // sort
+    itemsToDisplay = this.state.items.sort((a,b) => a.price < b.price);
+
     if (this.state.selectedCategory) {
       // filter your items array
       itemsToDisplay = itemsToDisplay.filter((item) => item.category === this.state.selectedCategory);
@@ -50,24 +53,28 @@ class Catalog extends Component {
   };
 
   // called after the render function is executed
-  componentDidMount() {
+  async componentDidMount() {
     console.log("Catalog did mount");
 
     // call the service to get the list of items
     var itemService = new ItemService();
-    var items = itemService.getCatalog();
+    var items = await itemService.getCatalog();
     console.log(items);
     this.setState({ items: items });
 
     // identify the unique categories
-    let cats = [];
+    /*let cats = [];
     for (let i = 0; i < items.length; i++) {
       let cat = items[i].category;
 
       if (!cats.includes(cat)) {
         cats.push(cat);
       }
-    }
+    }*/
+
+    // get categories from server
+    let cats = await itemService.getCategories();
+    console.log("categories from server", cats);
 
     this.setState({ categories: cats });
   }

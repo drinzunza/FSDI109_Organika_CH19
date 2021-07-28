@@ -1,3 +1,5 @@
+import axios from "axios";
+
 var data = [
   {
     _id: "5f40a6baac77a903d8f682c6",
@@ -75,11 +77,39 @@ var data = [
 ];
 
 class ItemService {
-  getCatalog() {
+  async getCatalog() {
     // logic to connect to a server and retrieve the list items
+    // URL: http://127.0.0.1:5000/api/catalog GET
+    let response = await axios.get("http://127.0.0.1:5000/api/catalog");
+    return response.data;
 
     // return mock data
-    return data;
+    // return data;
+  }
+
+  // method to save a product on the server
+  async saveItem(item) {
+    let response = await axios.post("http://127.0.0.1:5000/api/catalog", item);
+    // hot fix: add and id if missing
+    // todo: ensure server always returns an ID
+    let newItem = response.data;
+    if (!newItem._id) {
+      newItem._id = Math.random().toString();
+    }
+
+    return newItem;
+  }
+
+  // method to get the categories from the server
+  async getCategories() {
+    let response = await axios.get("http://127.0.0.1:5000/api/categories");
+    return response.data;
+  }
+
+  // method to validate a coupon code
+  async validateCode(code) {
+    let response = await axios.get("http://127.0.0.1:5000/api/discountCode/" + code);
+    return response.data;
   }
 
   getStock(itemId) {}

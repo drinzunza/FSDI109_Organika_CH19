@@ -1,3 +1,20 @@
 .item-in-cart {
     display: flex;
+    border: 1px solid #333;
+    background-color: #E9ECEF;
+    padding: 10px 20px;
+    align-items: center;
+}
+
+.item-in-cart img {
+    flex: 1;
+    height: 120px;
+}
+
+.item-in-cart .item-info {
+    flex: 4;
+}
+
+.item-in-cart label {
+    flex: 2;
 }

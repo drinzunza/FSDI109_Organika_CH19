@@ -22,7 +22,7 @@ class Item extends Component {
           <label className="info">Total</label>
           <label className="info">Price</label>
           <label className="total-value">${this.getTotal()}</label>
-          <label className="price-value">${this.props.prod.price.toFixed(2)}</label>
+          <label className="price-value">${(+this.props.prod.price || 0).toFixed(2)}</label>
         </div>
 
         <div className="item-controls">

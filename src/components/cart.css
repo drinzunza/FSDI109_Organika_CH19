@@ -1,3 +1,17 @@
-.cart-page {
+.cart-page {    
     min-height: 200px;
+    display: flex;  
+}
+
+.cart-page h4 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.cart-page .product-container {
+    flex: 4;
+}
+
+.cart-page .total-container {
+    flex: 1;
 }

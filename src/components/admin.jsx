@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./admin.css";
+import ItemService from "./../services/itemService";
 
 class Admin extends Component {
   state = {
@@ -57,9 +58,20 @@ class Admin extends Component {
     this.setState({ [event.target.name]: event.target.value });
   };
 
-  handleSave = () => {
+  handleSave = async () => {
     console.log("Saving product");
-    console.log({ ...this.state });
+
+    let item = { ...this.state };
+    item.price = item.price * 1;
+    item.stock = +item.stock;
+    item.minimum = parseInt(item.minimum);
+
+    console.log(item);
+
+    // send the object to the service
+    let itemService = new ItemService();
+    let response = await itemService.saveItem(item);
+    console.log("Saving response", response);
 
     // clear the capture form
   };
